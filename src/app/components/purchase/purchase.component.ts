@@ -12,30 +12,29 @@ export class PurchaseComponent {
     
   }
   
-  
   @Input()
   cart: Item[] = [];
   @Output()
   onCartChanged = new EventEmitter<boolean>()
 
-
   
   total = 0;
   purchase() {
-    if (this.cart.length == 0) {
+    if (this.cartService.cart.length == 0) {
       alert('Giỏ hàng hiện tại đang rỗng !!!');
     } else {
       let total = 0;
-      this.cart.forEach((item) => {
+      this.cartService.cart.forEach((item) => {
         total += item.price * item.quantity;
       });
       this.total = total;
       alert('Total: ' + total);
       alert('Bạn đã thành công thanh toán đơn hàng');
     }
-    this.cart = [];
+    this.cartService.cart = [];
     this.onCartChanged.emit(true);
     console.log(this.cart)
     this.total = 0;
   }
+
 }

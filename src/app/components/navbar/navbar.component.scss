@@ -3,7 +3,6 @@
   background-color: white;
   width: 100%;
   max-width: 1240px;
-  height: 100%;
   margin-left: auto;
   margin-right: auto;
   padding-right: 15px;
@@ -65,9 +64,19 @@
   border-bottom: 3px solid #ff5b6a;
 }
 
+#Add{
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+#Add:hover {
+  color: #ff5b6a;
+  border-bottom: 3px solid #ff5b6a;
+}
+
 .rightContainerNavbar{
     float: right;
-    margin-left: 300px;
+    margin-left: 250px;
     height: 80px;
 }
 

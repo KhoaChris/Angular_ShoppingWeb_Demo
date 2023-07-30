@@ -1,7 +1,9 @@
 <div id="container">
   <div class="formHolder">
     <app-form></app-form>
+    <app-purchase></app-purchase>
   </div>
+
   <div class="cardHolder">
     <app-card
       *ngFor="let item of this.cartService.listItems"

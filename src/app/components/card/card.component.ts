@@ -16,9 +16,10 @@ export class CardComponent {
   @Output()
   newItem = new EventEmitter<Item>();
 
-  addToCart(item: Item){
-    this.newItem.emit(item);
-  }
+  // addToCart(item: Item){
+  //   this.newItem.emit(item);
+  //   alert('Bạn đã thêm thành công sản phẩm vào giỏ hàng')
+  // }
 
   deleteItem(item: Item){
     this.cartService.deleteCard(item);

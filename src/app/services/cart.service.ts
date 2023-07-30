@@ -39,7 +39,7 @@ export class CartService {
       price: 29000,
       quantity: 0,
       image:
-        'https://cdn.lotteria.vn/media/catalog/product/cache/584039753b87a8d227764e04fc461e3e/l/b/lb0042-online_3.png',
+        'https://cdn.lotteria.vn/media/catalog/product/cache/584039753b87a8d227764e04fc461e3e/l/b/lb0007-online_3.png',
       stock: 10,
     },
     {
@@ -52,6 +52,7 @@ export class CartService {
       stock: 10,
     },
   ];
+  open!: boolean;
 
   showData() {
     console.log(this.listItems);
@@ -90,13 +91,46 @@ export class CartService {
     }
   }
 
+  decre(item: Item) {
+    let index = this.cart.findIndex((e) => e.id === item.id);
+    if (index !== -1) {
+      this.cart[index].quantity--;
+      // this.cart[index].inStock++;
+      item.stock++;
+    }
+    if (this.cart[index].quantity === 0) {
+      this.cart.splice(index, 1);
+    }
+  }
+
+  incre(item: Item) {
+    let index = this.cart.findIndex((e) => e.id === item.id);
+    if (index != -1 && this.listItems[index].stock > 0) {
+      this.cart[index].quantity++;
+      // this.cart[index].inStock--;
+      item.stock--;
+    } else {
+      alert(`Item ${item.name} is out of stock`);
+    }
+  }
+
+  remove(item: Item){
+    let index = this.cart.findIndex((e) => e.id === item.id);
+    if(index !== -1){
+      item.stock += this.cart[index].quantity;
+      this.cart.splice(index, 1);
+    }
+    this.cart = [];
+    item.quantity = 0;
+  }
+
   deleteCard(item: Item) {
     console.log(item);
     let index = this.listItems.findIndex((i) => {
       return i.id == item.id;
     });
     if (index != -1) {
-     this.listItems.splice(index, 1);
+      this.listItems.splice(index, 1);
     } else {
       return;
     }

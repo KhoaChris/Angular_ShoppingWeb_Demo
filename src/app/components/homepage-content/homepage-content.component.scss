@@ -60,7 +60,18 @@
 
 //phần những sản phẩm nổi bật
 .highlightProducts{
-    width: fit-content;
-    height: 120px;
+    width: 1100px;
+    height: fit-content;
     margin: 40px auto;
+    padding: 5px;
+}
+
+.headTitle{
+    width: inherit;
+    height: 40px;
+    font-size: 25px;
+    font-weight: 700;
+    color: black;
+    border-bottom: 2px solid #ff5b6a;
+    
 }

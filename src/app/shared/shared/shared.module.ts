@@ -7,6 +7,7 @@ import { FormComponent } from 'src/app/components/form/form.component';
 import { PurchaseComponent } from 'src/app/components/purchase/purchase.component';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { HomepageContentComponent } from 'src/app/components/homepage-content/homepage-content.component';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -15,7 +16,9 @@ import { HomepageContentComponent } from 'src/app/components/homepage-content/ho
   imports: [
     CommonModule,
     MdbCarouselModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    
   ],
   exports:[
     CommonModule,

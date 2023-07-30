@@ -1,32 +1,71 @@
 .purchaseContainer {
   border: 2px solid black;
-  width: 500px;
+  width: 380px;
   height: 280px;
   overflow: scroll;
-  border-radius: 10px;
+  border-radius: 5px;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+#contentPurchase{
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 10px;
+  padding-top: 10px;
+  border-bottom: 2px solid black;
 }
 
 .listItems {
   display: flex;
   padding: 5px;
+  font-size: 17px;
+}
 
+#deletePurchase{
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+#deletePurchase:hover{
+  background-color: red;
+  color: white;
 }
 
 #purchaseName {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 #purchasePrice {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 #purchaseQuantity {
   margin-right: 10px;
 }
 
-button{
+#decreButton{
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+#increButton{
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+}
+
+#totalButton{
   display: block;
   float: right;
+  border-radius: 10px;
+  border: none;
+}
+
+#totalButton:hover{
+  background-color: #49E955;
 }

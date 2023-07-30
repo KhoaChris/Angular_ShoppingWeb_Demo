@@ -9,6 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+openDialog: any;
   constructor(public cartService: CartService, public router: Router) {
   }
   

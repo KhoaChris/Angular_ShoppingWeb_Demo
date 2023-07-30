@@ -6,7 +6,7 @@
         <p id="name">{{item.name}}</p>
         <p id="price">{{item.price}} đ</p>
         <p id="stock">Số lượng kho: {{item.stock}}</p>
-        <button id="buttonAdd" (click)="addToCart(item)">Thêm vào giỏ hàng</button>
+        <button id="buttonAdd" (click)="this.cartService.addToCart(item)">Thêm vào giỏ hàng</button>
       </div>
     </div>
 </div>

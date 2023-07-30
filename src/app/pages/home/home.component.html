@@ -27,3 +27,10 @@
 <div class="homePageContent">
   <app-homepage-content></app-homepage-content>
 </div>
+
+<div class="cardHolder">
+  <app-card
+    *ngFor="let item of this.cartService.listItems"
+    [item]="item"
+  ></app-card>
+</div>

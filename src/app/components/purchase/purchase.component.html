@@ -1,9 +1,12 @@
-<dialog class="purchaseContainer">
-    <p>Giỏ hàng của bạn</p>
-    <div *ngFor="let i of cart" class="listItems">
+<div class="purchaseContainer">
+    <p id="contentPurchase">GIỎ HÀNG</p>
+    <div *ngFor="let i of this.cartService.cart" class="listItems">
+        <button id="deletePurchase" (click)="this.cartService.remove(i)">X</button>
         <p id = "purchaseName">{{i.name}}</p>
         <p id = "purchasePrice">{{i.price}}</p>
         <p id = "purchaseQuantity">{{i.quantity}}</p>
+        <button id="decreButton" (click)="this.cartService.decre(i)">-</button>
+        <button id="increButton" (click)="this.cartService.incre(i)">+</button>
     </div>
-    <button (click)="purchase()">Thanh toán</button>
-</dialog>
+    <button id="totalButton" (click)="purchase()">Thanh toán</button>
+</div>
