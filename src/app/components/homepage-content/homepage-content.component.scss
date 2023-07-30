@@ -1,0 +1,66 @@
+.topHighlight{
+    display: flex;
+    width: fit-content;
+    height: 120px;
+    margin: 40px auto;
+    border-radius: 10px;
+    background-color: #FFEAE3;
+}
+
+.swiperBestSeller{
+    display: flex;
+    width: 278px;
+    height: inherit;
+    color: #ff5b6a;
+    border-right: 1px solid #ff5b6a;
+}
+
+.swiperBestSeller:hover{
+    background-color: #ff5b6a;
+    color:white;
+}
+
+.swiperOrder{
+    display: flex;
+    width: 278px;
+    height: inherit;
+    color: #ff5b6a;
+    border-right: 1px solid #ff5b6a;
+}
+
+.swiperOrder:hover{
+    background-color: #ff5b6a;
+    color:white;
+}
+
+.swiperSales{
+    display: flex;
+    width: 278px;
+    height: inherit;
+    color: #ff5b6a;
+    border-right: 1px solid #ff5b6a;
+}
+
+.swiperSales:hover{
+    background-color: #ff5b6a;
+    color:white;
+}
+
+.swiperShop{
+    display: flex;
+    width: 278px;
+    height: inherit;
+    color: #ff5b6a;
+}
+
+.swiperShop:hover{
+    background-color: #ff5b6a;
+    color:white;
+}
+
+//phần những sản phẩm nổi bật
+.highlightProducts{
+    width: fit-content;
+    height: 120px;
+    margin: 40px auto;
+}

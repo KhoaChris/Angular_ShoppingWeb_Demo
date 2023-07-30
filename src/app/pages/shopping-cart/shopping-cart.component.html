@@ -1,0 +1,11 @@
+<div id="container">
+  <div class="formHolder">
+    <app-form></app-form>
+  </div>
+  <div class="cardHolder">
+    <app-card
+      *ngFor="let item of this.cartService.listItems"
+      [item]="item"
+    ></app-card>
+  </div>
+</div>

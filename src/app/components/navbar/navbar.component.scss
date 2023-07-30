@@ -1,0 +1,130 @@
+.containerNavbar {
+  box-sizing: border-box;
+  background-color: white;
+  width: 100%;
+  max-width: 1240px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.nameBrand {
+  display: flex;
+  font-size: 0px;
+  margin-left: 50px;
+  width: fit-content;
+  height: 100px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  color: black;
+}
+
+#Sale {
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+#Sale:hover {
+  color: #ff5b6a;
+  border-bottom: 3px solid #ff5b6a;
+}
+
+#Order{
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+#Order:hover {
+  color: #ff5b6a;
+  border-bottom: 3px solid #ff5b6a;
+}
+
+#Birthday{
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+#Birthday:hover {
+  color: #ff5b6a;
+  border-bottom: 3px solid #ff5b6a;
+}
+
+#Shop{
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+#Shop:hover {
+  color: #ff5b6a;
+  border-bottom: 3px solid #ff5b6a;
+}
+
+.rightContainerNavbar{
+    float: right;
+    margin-left: 300px;
+    height: 80px;
+}
+
+.topRight{
+  height: 40px;
+  width: 300px;
+  display: flex;
+  text-align: left;
+  padding-top: 3px;
+}
+
+.language{
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  padding: 3px 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.download{
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  padding: 3px;
+  border-radius: 5px;
+  margin-left: 15px;
+  background-color: #ff5b6a;
+}
+
+#location{
+  border-radius: 50%;
+  padding: 5px;
+  margin-right: 13px;
+  box-shadow: 0 4px 8px rgba(0,0,0,.15);
+  padding: 10px;
+}
+
+#login{
+  border-radius: 50%;
+  padding: 5px;
+  margin-right: 25px;
+  box-shadow: 0 4px 8px rgba(0,0,0,.15);
+  padding: 10px;
+}
+
+#notification{
+  border-radius: 50%;
+  padding: 5px;
+  margin-right: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,.15);
+  padding: 10px;
+}
+
+#cart{
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,.15);
+  padding: 10px;
+}

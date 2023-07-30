@@ -1,0 +1,14 @@
+<div id="container">
+    <form class="navCont" [formGroup]="myForm" (submit)="submit()">
+        <p>Bảng dữ liệu</p>
+        <label for="name">Tên sản phẩm</label>
+        <input type="text" id="name" [formControl]="name">
+        <label for="price">Đơn giá</label>
+        <input type="number" id="price" [formControl]="price">
+        <label for="stock">Số lượng kho</label>
+        <input type="number" id="stock" [formControl]="stock">
+        <label for="image">Hình ảnh</label>
+        <input type="text" id="image" [formControl]="image">
+        <button type="submit">Trình bày sản phẩm</button>
+    </form>
+</div>

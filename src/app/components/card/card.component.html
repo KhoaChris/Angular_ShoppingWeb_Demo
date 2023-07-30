@@ -1,0 +1,12 @@
+<div class="wrapper">
+    <div class="card">
+      <button id="buttonDelete" (click)="deleteItem(item)">X</button>
+      <img src="{{item.image}}" alt="" />
+      <div id="container">
+        <p id="name">{{item.name}}</p>
+        <p id="price">{{item.price}} đ</p>
+        <p id="stock">Số lượng kho: {{item.stock}}</p>
+        <button id="buttonAdd" (click)="addToCart(item)">Thêm vào giỏ hàng</button>
+      </div>
+    </div>
+</div>

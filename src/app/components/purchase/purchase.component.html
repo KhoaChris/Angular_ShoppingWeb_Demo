@@ -1,0 +1,9 @@
+<dialog class="purchaseContainer">
+    <p>Giỏ hàng của bạn</p>
+    <div *ngFor="let i of cart" class="listItems">
+        <p id = "purchaseName">{{i.name}}</p>
+        <p id = "purchasePrice">{{i.price}}</p>
+        <p id = "purchaseQuantity">{{i.quantity}}</p>
+    </div>
+    <button (click)="purchase()">Thanh toán</button>
+</dialog>

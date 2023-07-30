@@ -1,0 +1,32 @@
+.purchaseContainer {
+  border: 2px solid black;
+  width: 500px;
+  height: 280px;
+  overflow: scroll;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.listItems {
+  display: flex;
+  padding: 5px;
+
+}
+
+#purchaseName {
+  margin-right: 10px;
+}
+
+#purchasePrice {
+  margin-right: 10px;
+}
+
+#purchaseQuantity {
+  margin-right: 10px;
+}
+
+button{
+  display: block;
+  float: right;
+}
