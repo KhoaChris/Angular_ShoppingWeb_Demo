@@ -41,8 +41,8 @@ export class FormComponent {
       stock: this.stock.value,
     };
 
-    let itemID = this.listItems.find((item) => item.id === newItem.id);
-    let itemName = this.listItems.find((item) => item.name === newItem.name);
+    let itemID = this.cartService.listItems2.find((item) => item.id === newItem.id);
+    let itemName = this.cartService.listItems2.find((item) => item.name === newItem.name);
 
     if (itemID) {
       alert('Id already exists');

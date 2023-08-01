@@ -27,6 +27,7 @@ export class NavbarComponent {
 
   logoutButton(){
     this.auth.logOut();
+    this.router.navigate(['/']);
   }
 
 }
