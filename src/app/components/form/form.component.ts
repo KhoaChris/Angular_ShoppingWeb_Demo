@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { addDoc } from '@angular/fire/firestore';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Timestamp } from 'firebase/firestore';
 import { Item } from 'src/app/models/item.model';
@@ -18,17 +19,17 @@ export class FormComponent {
     this.myForm.addControl('quantity', this.quantity);
     this.myForm.addControl('image', this.image);
     this.myForm.addControl('stock', this.stock);
-    this.listItems = this.cartService.listItems;
+    this.listItems = this.cartService.listItems2;
     console.log(this.listItems);
   }
 
   myForm: FormGroup = new FormGroup({});
   id: FormControl = new FormControl('');
   name: FormControl = new FormControl('');
-  price: FormControl = new FormControl('');
-  quantity: FormControl = new FormControl('');
+  price: FormControl = new FormControl(0);
+  quantity: FormControl = new FormControl(0);
   image: FormControl = new FormControl('');
-  stock: FormControl = new FormControl('');
+  stock: FormControl = new FormControl(0);
 
   submit() {
     let newItem: Item = {
@@ -69,7 +70,7 @@ export class FormComponent {
       alert('Stock must be above 0');
       this.myForm.value.stock = '';
     } else {
-      this.cartService.listItems.push(newItem);
+      this.cartService.submit(newItem);
       alert('Đã thêm thành công sản phẩm vào menu');
       console.log(this.listItems);
       this.myForm.reset();

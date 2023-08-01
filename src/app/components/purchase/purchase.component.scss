@@ -2,7 +2,7 @@
   border: 2px solid black;
   width: 380px;
   height: 280px;
-  overflow: scroll;
+  overflow-y: scroll;
   border-radius: 5px;
   padding-left: 10px;
   padding-right: 10px;
@@ -53,10 +53,20 @@
   margin-right: 5px;
 }
 
+#decreButton:hover{
+  background-color: red;
+  color: white;
+}
+
 #increButton{
   border-radius: 50%;
   width: 25px;
   height: 25px;
+}
+
+#increButton:hover{
+  background-color: green;
+  color: white;
 }
 
 #totalButton{
@@ -68,4 +78,16 @@
 
 #totalButton:hover{
   background-color: #49E955;
+}
+
+#clearButton{
+  display: block;
+  float: right;
+  border-radius: 10px;
+  border: none;
+  margin-right: 10px;
+}
+
+#clearButton:hover{
+  background-color: red;
 }

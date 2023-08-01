@@ -9,7 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class HomeComponent {
   constructor(public router:Router, public cartService:CartService){
-    
+    this.cartService.getData();
   }
   
 }

@@ -1,10 +1,59 @@
 import { Injectable } from '@angular/core';
 import { Item } from '../models/item.model';
+import {
+  Firestore,
+  addDoc,
+  getDoc,
+  collection,
+  getDocs,
+  collectionSnapshots,
+  deleteDoc,
+  query,
+  where,
+  CollectionReference,
+  doc,
+  updateDoc,
+} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
+  listItems2: Item[] = [];
+  itemsCollection = collection(this.firestore, 'items');
+
+  constructor(public firestore: Firestore) {
+    //add full collection
+    // for(let item of this.listItems){
+    //   addDoc(this.itemsCollection,item);
+    // }
+    // this.updateItem({
+    //   id: '3',
+    //   name: 'Double Cheese Burger',
+    //   price: 30000,
+    //   quantity: 0,
+    //   stock:10,
+    //   image:'https://cdn.lotteria.vn/media/catalog/product/cache/584039753b87a8d227764e04fc461e3e/l/b/lb0042-online_3.png',
+    // });
+    // this.getData();
+  }
+
+  // Cach 1
+  // async getData(){
+  //   (await this.docSnap).docs.map((doc) => {
+  //     console.log(doc.data())
+  //   })
+  // }
+
+  // Cach 2
+  async getData() {
+    collectionSnapshots(this.itemsCollection).subscribe((snapshop) => {
+      let result = snapshop.map((doc) => doc.data());
+      this.listItems2 = result as Item[];
+      console.log(this.listItems2);
+    });
+  }
+
   listItems: Item[] = [
     {
       id: '1',
@@ -26,7 +75,7 @@ export class CartService {
     },
     {
       id: '3',
-      name: 'Double Cheese Burger',
+      name: 'Burger Phô Mai',
       price: 39000,
       quantity: 0,
       image:
@@ -55,40 +104,40 @@ export class CartService {
   open!: boolean;
 
   showData() {
-    console.log(this.listItems);
+    console.log(this.itemsCollection);
   }
 
   cart: Item[] = [];
 
   addToCart(item: Item) {
-    let index = this.cart.findIndex((i) => {
-      return i.id == item.id;
-    });
+    let index = this.cart.findIndex((i) => i.id === item.id);
     console.log(index);
     if (index != -1) {
-      let subIndex = this.listItems.findIndex((i) => {
-        return i.id == this.cart[index].id;
-      });
-      if (subIndex != -1 && this.listItems[subIndex].stock > 0) {
+      let subIndex = this.listItems2.findIndex((i) => i.id === this.cart[index].id);
+      if (subIndex != -1 && this.listItems2[subIndex].stock > 0) {
         this.cart[index].quantity++;
-        this.listItems[subIndex].stock--;
+        this.listItems2[subIndex].stock--;
+        this.updateItem(item);
         console.log(this.cart);
-        console.log(this.listItems[subIndex].stock);
+        console.log(this.listItems2[subIndex].stock);
       } else {
         alert(`Item ${item.name} is out of stock`);
       }
     } else {
-      let subIndex = this.listItems.findIndex((i) => {
-        return i.id == item.id;
-      });
-      if (subIndex != -1 && this.listItems[subIndex].stock > 0) {
+      let subIndex = this.listItems2.findIndex((i) => i.id === item.id);
+      if (subIndex != -1 && this.listItems2[subIndex].stock > 0) {
         item.quantity++;
         this.cart.push(item);
-        this.listItems[subIndex].stock--;
-        console.log(this.listItems[subIndex].stock);
+        this.listItems2[subIndex].stock--;
+        this.updateItem(item);
+        console.log(this.listItems2[subIndex].stock);
         console.log(this.cart);
       }
     }
+  }
+
+  submit(item: Item) {
+    addDoc(this.itemsCollection, item);
   }
 
   decre(item: Item) {
@@ -97,6 +146,7 @@ export class CartService {
       this.cart[index].quantity--;
       // this.cart[index].inStock++;
       item.stock++;
+      this.updateItem(item);
     }
     if (this.cart[index].quantity === 0) {
       this.cart.splice(index, 1);
@@ -105,34 +155,48 @@ export class CartService {
 
   incre(item: Item) {
     let index = this.cart.findIndex((e) => e.id === item.id);
-    if (index != -1 && this.listItems[index].stock > 0) {
+    if (index != -1 && this.listItems2[index].stock > 0 ) {
       this.cart[index].quantity++;
       // this.cart[index].inStock--;
       item.stock--;
+      this.updateItem(item);
     } else {
       alert(`Item ${item.name} is out of stock`);
     }
   }
 
-  remove(item: Item){
+  remove(item: Item) {
     let index = this.cart.findIndex((e) => e.id === item.id);
-    if(index !== -1){
+    if (index !== -1) {
       item.stock += this.cart[index].quantity;
       this.cart.splice(index, 1);
+      this.updateItem(item);
     }
-    this.cart = [];
+    //this.cart = [];
     item.quantity = 0;
   }
 
   deleteCard(item: Item) {
-    console.log(item);
-    let index = this.listItems.findIndex((i) => {
+    let index = this.listItems2.findIndex((i) => {
       return i.id == item.id;
     });
     if (index != -1) {
-      this.listItems.splice(index, 1);
+      this.listItems2.splice(index, 1);
     } else {
       return;
     }
+    this.deleteItem(item.id);
+  }
+
+  async deleteItem(id: string) {
+    let q = query(this.itemsCollection, where('id', '==', id));
+    let docSnap = await getDocs(q);
+    await deleteDoc(docSnap.docs[0].ref);
+  }
+
+  async updateItem(item: Item) {
+    let q = query(this.itemsCollection, where('id', '==', item.id));
+    let docSnap = await getDocs(q);
+    await updateDoc(docSnap.docs[0].ref, { ...item });
   }
 }

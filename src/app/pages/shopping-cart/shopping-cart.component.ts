@@ -8,6 +8,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent {
-  constructor(public router: Router, public cartService: CartService){}
-  
+  constructor(public router: Router, public cartService: CartService){
+    this.cartService.getData();
+  }
 }

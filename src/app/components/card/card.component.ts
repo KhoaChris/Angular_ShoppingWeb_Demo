@@ -1,13 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Item } from 'src/app/models/item.model';
 import { CartService } from 'src/app/services/cart.service';
+import { DialogUpdateComponent } from '../dialog-update/dialog-update.component';
+import { MatDialog } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  constructor(public cartService: CartService){
+  constructor(public cartService: CartService, public dialog:MatDialog){
     
   }
  
@@ -16,12 +19,11 @@ export class CardComponent {
   @Output()
   newItem = new EventEmitter<Item>();
 
-  // addToCart(item: Item){
-  //   this.newItem.emit(item);
-  //   alert('Bạn đã thêm thành công sản phẩm vào giỏ hàng')
-  // }
-
   deleteItem(item: Item){
     this.cartService.deleteCard(item);
+  }
+
+  openDialog() {
+    this.dialog.open(DialogUpdateComponent);
   }
 }

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { CartService } from './services/cart.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,8 +13,4 @@ export class AppComponent {
   constructor(public cartService: CartService, public router: Router) {
     this.cartService.showData();
   }
-  // cart: Item[] = [];
-
-  
-  }
-
+}

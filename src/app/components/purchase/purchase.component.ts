@@ -8,22 +8,20 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./purchase.component.scss'],
 })
 export class PurchaseComponent {
-  constructor(public cartService: CartService){
-    
-  }
-  
+  constructor(public cartService: CartService) {}
+
   @Input()
   cart: Item[] = [];
   @Output()
-  onCartChanged = new EventEmitter<boolean>()
+  onCartChanged = new EventEmitter<boolean>();
 
-  
   total = 0;
   purchase() {
     if (this.cartService.cart.length == 0) {
       alert('Giỏ hàng hiện tại đang rỗng !!!');
     } else {
       let total = 0;
+      let quantities = 0;
       this.cartService.cart.forEach((item) => {
         total += item.price * item.quantity;
       });
@@ -33,8 +31,7 @@ export class PurchaseComponent {
     }
     this.cartService.cart = [];
     this.onCartChanged.emit(true);
-    console.log(this.cart)
+    console.log(this.cart);
     this.total = 0;
   }
-
 }
