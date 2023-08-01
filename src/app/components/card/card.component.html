@@ -1,10 +1,10 @@
 <div class="wrapper">
     <div class="card">
       <div class ="deleteAndUpdate">
-        <button id="customizedButton" (click)="openDialog()" >
+        <button *ngIf="this.auth.user != null" id="customizedButton" (click)="openDialog()" >
           <img id="customPic" src="https://cdn-icons-png.flaticon.com/512/7191/7191951.png">
         </button>
-        <button id="buttonDelete" (click)="deleteItem(item)">X</button>
+        <button *ngIf="this.auth.user != null" id="buttonDelete" (click)="deleteItem(item)">X</button>
       </div>
       <img src="{{item.image}}" alt="" />
       <div id="container">

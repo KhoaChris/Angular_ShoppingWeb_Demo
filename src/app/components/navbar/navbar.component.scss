@@ -109,7 +109,6 @@
 
 #location{
   border-radius: 50%;
-  padding: 5px;
   margin-right: 13px;
   box-shadow: 0 4px 8px rgba(0,0,0,.15);
   padding: 10px;
@@ -117,23 +116,28 @@
 
 #login{
   border-radius: 50%;
-  padding: 5px;
-  margin-right: 25px;
+  margin-right: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,.15);
   padding: 10px;
 }
 
 #notification{
   border-radius: 50%;
-  padding: 5px;
-  margin-right: 20px;
+  margin-right: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,.15);
   padding: 10px;
 }
 
 #cart{
   border-radius: 50%;
-  padding: 5px;
   box-shadow: 0 4px 8px rgba(0,0,0,.15);
   padding: 10px;
+  margin-right: 10px;
+}
+
+#logout{
+  border-radius: 50%;
+  margin-right: 25px;
+  box-shadow: 0 4px 8px rgba(0,0,0,.15);
+  padding:10px
 }

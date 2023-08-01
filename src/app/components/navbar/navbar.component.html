@@ -7,7 +7,7 @@
         <p id="Order">Đặt Hàng</p>
         <p id="Birthday">Sinh Nhật</p>
         <p id="Shop">Cửa Hàng</p>
-        <p id="Add"(click)="navigateToCart()">Quản Lý</p>
+        <p *ngIf="this.auth.user != null" id="Add"(click)="navigateToCart()">Quản Lý</p>
     </div>
     <div class="rightContainerNavbar">
         <div class="topRight">
@@ -23,10 +23,10 @@
 
         <div class="accountMenu">
             <img id="location" src="https://www.lotteria.vn/grs-static/images/icon-pos-2.svg" >
-            <img id="login" src="https://www.lotteria.vn/grs-static/images/icon-myaccount.svg" (click)="loginButton()">
+            <img *ngIf="this.auth.user == null" id="login" src="https://www.lotteria.vn/grs-static/images/icon-myaccount.svg" (click)="loginButton()">
             <img id="notification" src="https://www.lotteria.vn/grs-static/images/icon-notification.svg">
             <img id="cart" src="https://www.lotteria.vn/grs-static/images/icon-cart.svg">
-            <!-- <button (click)="logoutButton()">Out</button> -->
+            <img *ngIf="this.auth.user != null" id="logout" src="https://img.freepik.com/free-icon/logout_318-926141.jpg " style="height: fit-content;width: 40px" (click)="logoutButton()">
         </div>
     </div>
 </div>

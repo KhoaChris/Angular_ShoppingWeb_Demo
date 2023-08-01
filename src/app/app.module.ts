@@ -55,7 +55,7 @@ import { StoreModule } from '@ngrx/store';
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideAuth(() => getAuth()),
         provideFirestore(() => getFirestore()),
-        StoreModule.forRoot({}, {}),
+        // StoreModule.forRoot({}, {}),
     ]
 })
 export class AppModule {}

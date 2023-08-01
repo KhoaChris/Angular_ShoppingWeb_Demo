@@ -3,6 +3,7 @@ import { Item } from 'src/app/models/item.model';
 import { CartService } from 'src/app/services/cart.service';
 import { DialogUpdateComponent } from '../dialog-update/dialog-update.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-card',
@@ -10,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  constructor(public cartService: CartService, public dialog:MatDialog){
+  constructor(public cartService: CartService, public dialog:MatDialog,public auth:AuthService){
     
   }
  
