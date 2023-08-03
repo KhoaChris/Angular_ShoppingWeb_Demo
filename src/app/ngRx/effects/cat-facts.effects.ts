@@ -14,9 +14,9 @@ export class CatFactEffects {
     this.actions$.pipe(
       ofType(CatFactActions.getCatFacts),
       switchMap(() =>
-        this.catSv.getCatFacts(100, 5).pipe(
+        this.catSv.getCatFacts(100, 8).pipe(
           switchMap((catFacts: any) => {
-            return this.catSv.getCatImages(5).pipe(
+            return this.catSv.getCatImages(8).pipe(
               map((catImages: any) => {
                 catFacts = catFacts['data'].map(
                   (catFact: CatFact, index: number) => {

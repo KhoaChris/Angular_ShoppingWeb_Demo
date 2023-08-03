@@ -21,6 +21,10 @@ export class NavbarComponent {
     this.router.navigate(['/shopping-cart']);
   }
 
+  navigateToMeow(){
+    this.router.navigate(['/cat-blog']);
+  }
+
   loginButton(){
     this.auth.loginGoogle();
   }
