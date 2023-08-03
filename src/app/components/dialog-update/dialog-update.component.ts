@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -13,9 +13,14 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './dialog-update.component.html',
 })
 export class DialogUpdateComponent {
-  constructor(public dialog: MatDialog,public router: Router,public cartService: CartService) {
-    
-    this.myForm.addControl('ID', this.id);
+  @Input() item!: Item;
+
+  constructor(
+    public dialog: MatDialog,
+    public router: Router,
+    public cartService: CartService
+  ) {
+    // this.myForm.addControl('ID', this.id);
     this.myForm.addControl('name', this.name);
     this.myForm.addControl('price', this.price);
     this.myForm.addControl('quantity', this.quantity);
@@ -24,7 +29,7 @@ export class DialogUpdateComponent {
   }
 
   myForm: FormGroup = new FormGroup({});
-  id: FormControl = new FormControl('');
+  // id: FormControl = new FormControl('');
   name: FormControl = new FormControl('');
   price: FormControl = new FormControl(0);
   quantity: FormControl = new FormControl(0);
@@ -32,15 +37,11 @@ export class DialogUpdateComponent {
   stock: FormControl = new FormControl(0);
 
   update() {
-    let newItem: Item = {
-      id: this.id.value,
-      name: this.name.value,
-      price: this.price.value,
-      quantity: this.quantity.value,
-      image: this.image.value,
-      stock: this.stock.value,
-    };
-    this.cartService.updateItem(newItem);
+    let oldItem = this.cartService.itemToUpdate;
+    let newItem = {...oldItem,...this.myForm.value};
+    console.log(oldItem);
+    console.log(newItem);
+    this.cartService.updateItemDialog(newItem);
     alert('Đã cập nhật');
   }
 }

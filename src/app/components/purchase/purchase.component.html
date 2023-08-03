@@ -5,7 +5,7 @@
         <p id = "purchaseName">{{i.name}}</p>
         <p id = "purchasePrice">{{i.price}}</p>
         <p id = "purchaseQuantity">{{i.quantity}}</p>
-        <button id="decreButton" (click)="this.cartService.decre(i)">-</button>
+        <button id="decreButton" (click)="decrease(i)">-</button>
         <button id="increButton" (click)="this.cartService.incre(i)">+</button>
     </div>
     <div>

@@ -40,6 +40,10 @@ export class PurchaseComponent {
     console.log(this.cart);
     this.total = 0;
   }
+
+  decrease(item:Item){
+    this.cartService.decre(item);
+  }
 }
 
 

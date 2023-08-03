@@ -14,6 +14,8 @@ import {
   doc,
   updateDoc,
 } from '@angular/fire/firestore';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogUpdateComponent } from '../components/dialog-update/dialog-update.component';
 
 @Injectable({
   providedIn: 'root',
@@ -21,8 +23,9 @@ import {
 export class CartService {
   listItems2: Item[] = [];
   itemsCollection = collection(this.firestore, 'items');
+  itemToUpdate!: Item;
 
-  constructor(public firestore: Firestore) {
+  constructor(public firestore: Firestore, public dialog: MatDialog) {
     //add full collection
     // for(let item of this.listItems){
     //   addDoc(this.itemsCollection,item);
@@ -50,7 +53,7 @@ export class CartService {
     collectionSnapshots(this.itemsCollection).subscribe((snapshop) => {
       let result = snapshop.map((doc) => doc.data());
       this.listItems2 = result as Item[];
-      console.log(this.listItems2);
+      // console.log(this.listItems2);
     });
   }
 
@@ -110,10 +113,12 @@ export class CartService {
   cart: Item[] = [];
 
   addToCart(item: Item) {
-    let index = this.cart.findIndex((i) => i.id === item.id);
+    let index = this.cart.findIndex((i) => i.id == item.id);
     console.log(index);
     if (index != -1) {
-      let subIndex = this.listItems2.findIndex((i) => i.id === this.cart[index].id);
+      let subIndex = this.listItems2.findIndex(
+        (i) => i.id == this.cart[index].id
+      );
       if (subIndex != -1 && this.listItems2[subIndex].stock > 0) {
         this.cart[index].quantity++;
         this.listItems2[subIndex].stock--;
@@ -141,23 +146,23 @@ export class CartService {
   }
 
   decre(item: Item) {
-    let index = this.cart.findIndex((e) => e.id === item.id);
-    if (index !== -1) {
+    let index = this.cart.findIndex((i) => i.id == item.id);
+    console.log(index);
+    if (index != -1) {
       this.cart[index].quantity--;
-      // this.cart[index].inStock++;
       item.stock++;
       this.updateItem(item);
     }
-    if (this.cart[index].quantity === 0) {
+    if (this.cart[index].quantity == 0) {
       this.cart.splice(index, 1);
     }
   }
 
   incre(item: Item) {
-    let index = this.cart.findIndex((e) => e.id === item.id);
-    if (index != -1 && this.listItems2[index].stock > 0 ) {
+    let index = this.cart.findIndex((i) => i.id == item.id);
+    console.log(index);
+    if (index != -1 && this.listItems2[index].stock > 0) {
       this.cart[index].quantity++;
-      // this.cart[index].inStock--;
       item.stock--;
       this.updateItem(item);
     } else {
@@ -166,8 +171,8 @@ export class CartService {
   }
 
   remove(item: Item) {
-    let index = this.cart.findIndex((e) => e.id === item.id);
-    if (index !== -1) {
+    let index = this.cart.findIndex((e) => e.id == item.id);
+    if (index != -1) {
       item.stock += this.cart[index].quantity;
       this.cart.splice(index, 1);
       this.updateItem(item);
@@ -192,6 +197,15 @@ export class CartService {
     let q = query(this.itemsCollection, where('id', '==', id));
     let docSnap = await getDocs(q);
     await deleteDoc(docSnap.docs[0].ref);
+  }
+
+  async updateItemDialog(item: Item) {
+    // this.dialog.open(DialogUpdateComponent)
+    this.itemToUpdate = item;
+    console.log(item);
+    let q = query(this.itemsCollection, where('id', '==', item.id));
+    let docSnap = await getDocs(q);
+    await updateDoc(docSnap.docs[0].ref, { ...item });
   }
 
   async updateItem(item: Item) {

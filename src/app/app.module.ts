@@ -24,7 +24,6 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { StoreModule } from '@ngrx/store';
 
 
 @NgModule({
@@ -55,7 +54,6 @@ import { StoreModule } from '@ngrx/store';
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideAuth(() => getAuth()),
         provideFirestore(() => getFirestore()),
-        // StoreModule.forRoot({}, {}),
     ]
 })
 export class AppModule {}

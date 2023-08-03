@@ -1,15 +1,16 @@
-<div ma class ="containerDialog">
-  <div mat-dialog-title id="titleDialog">Thông tin sản phẩm</div>
-  <label mat-dialog-content for="name">Tên sản phẩm</label>
-  <input type="text" id="name" [formControl]="name" />
-  <label mat-dialog-content for="price">Đơn giá</label>
-  <input type="number" id="price" [formControl]="price" />
-  <label mat-dialog-content for="stock">Số lượng kho</label>
-  <input type="number" id="stock" [formControl]="stock" />
-  <label mat-dialog-content for="image">Hình ảnh</label>
-  <input type="text" id="image" [formControl]="image" />
-  <div mat-dialog-actions>
-    <button mat-button mat-dialog-close>Close</button>
-    <button mat-button (click)="this.update()">Cập nhật</button>
+
+  <div id="containerDialog">
+    <div mat-dialog-title id="titleDialog">Thông tin sửa đổi</div>
+    <label mat-dialog-content for="name">Tên sản phẩm</label>
+    <input type="text" id="name" [formControl]="name" />
+    <label mat-dialog-content for="price">Đơn giá</label>
+    <input type="number" id="price" [formControl]="price" />
+    <label mat-dialog-content for="stock">Số lượng kho</label>
+    <input type="number" id="stock" [formControl]="stock" />
+    <label mat-dialog-content for="image">Hình ảnh</label>
+    <input type="text" id="image" [formControl]="image" />
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close>Close</button>
+      <button mat-button (click)="this.update()">Cập nhật</button>
+    </div>
   </div>
-</div>

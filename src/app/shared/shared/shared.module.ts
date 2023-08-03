@@ -8,9 +8,10 @@ import { PurchaseComponent } from 'src/app/components/purchase/purchase.componen
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { HomepageContentComponent } from 'src/app/components/homepage-content/homepage-content.component';
 import { DialogUpdateComponent } from "src/app/components/dialog-update/dialog-update.component";
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatDialogModule,
     MatIconModule,
     MatButtonModule,
+    HttpClientModule
   ],
   exports: [
     CommonModule,
@@ -42,6 +44,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatDialogModule,
     MatIconModule,
     MatButtonModule,
+    HttpClientModule
   ],
 })
 export class SharedModule {}

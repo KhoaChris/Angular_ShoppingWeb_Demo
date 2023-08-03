@@ -26,5 +26,6 @@ export class CardComponent {
 
   openDialog() {
     this.dialog.open(DialogUpdateComponent);
+    this.cartService.updateItemDialog(this.item);
   }
 }

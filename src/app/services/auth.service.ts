@@ -26,6 +26,7 @@ export class AuthService {
   }
 
   async logOut(){
+    alert('Đăng xuất thành công !!!');
     return signOut(this.auth);
   }
 }
