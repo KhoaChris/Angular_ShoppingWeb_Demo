@@ -11,19 +11,16 @@ import { CatService } from 'src/app/services/cat.service';
   templateUrl: './cat-blog.component.html',
   styleUrls: ['./cat-blog.component.scss'],
 })
-export class CatBlogComponent implements OnInit {
-  listFacts$: Observable<CatFact[]>
+export class CatBlogComponent {
+  listFacts$!: Observable<CatFactState>
   
-  constructor(public store: Store<{catFact : CatFactState}>) {
-    this.listFacts$ = store.select((state) => state.catFact.catFacts);
-  }
-
-  ngOnInit(): void {
-      this.getCatFacts();
-  }
-
-  async getCatFacts(){
+  constructor(public catService: CatService,public store: Store<{catFact : CatFactState}>) {
+    // this.listFacts$ = store.select((state) => state.catFact.catFacts);
+    this.listFacts$ = this.store.select('catFact');
     this.store.dispatch(CatFactActions.getCatFacts());
-    console.log('Loading')
+    this.listFacts$.subscribe((data) => {
+      console.log(data.catFacts);
+    })
+
   }
 }

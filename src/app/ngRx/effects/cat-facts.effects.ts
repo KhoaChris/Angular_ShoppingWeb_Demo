@@ -24,7 +24,7 @@ export class CatFactEffects {
                     return {...catFact, image: catImages[index]['url']};
                   }
                 );
-                return CatFactActions.getCatFactsSuccess(catFacts);
+                return CatFactActions.getCatFactsSuccess({catFacts: catFacts});
               }),
               catchError((error) => {
                 return of(CatFactActions.getCatFactsError(error));

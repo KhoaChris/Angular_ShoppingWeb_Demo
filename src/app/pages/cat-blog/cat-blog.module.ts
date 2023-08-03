@@ -12,7 +12,4 @@ import { CardCatComponent } from './components/card-cat/card-cat.component';
   imports: [CommonModule, CatBlogRoutingModule, SharedModule],
 })
 export class CatBlogModule {
-  constructor(public catSv: CatService) {
-    this.catSv.getCatFacts(100,5);
-  }
 }
